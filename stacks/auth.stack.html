@@ -1,0 +1,169 @@
+<style>
+    #loginForm {
+        max-width: 99%;
+        margin: auto;
+    }
+
+    .compHolder {
+        background: rgba(255, 0, 0, 0);
+        margin: auto;
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .compHolder img {
+        max-width: 70%;
+        margin: auto;
+    }
+
+
+    @media only screen and (min-width:768px) {
+        #loginForm {
+            max-width: 70%;
+        }
+
+        .compHolder {
+            background: rgba(255, 0, 0, 0);
+            margin: auto;
+            text-align: center;
+            padding-top: 5em
+        }
+    }
+</style>
+
+<!-- <div class="re sixteen wide column"></div> -->
+<div class="re sixteen wide column">
+
+    <div class="loginContainer"
+        style="background: linear-gradient(to top right,rgb(212, 52, 52),rgb(0, 92, 128));height: 105vh;">
+        <div class="ui centered stackable grid">
+            <div class="computer tablet only sixteen wide column" style="height: 20vh;">
+
+            </div>
+            <div class="mobile only sixteen wide column" style="height: 10vh;">
+
+            </div>
+
+            <div class="re eight wide column" style="height:50vh ;">
+                <div class="ui stackable segment grid" style="border-radius: 1em;padding: 2em !important;">
+                    <div class="sixteen wide column">
+                        <div class="ui error message" style="text-align: center;display: none;">
+                            Incorrect Username Or Password. Please Try Again
+                        </div>
+                    </div>
+                    <div class="yello six wide column">
+                        <div class="compHolder">
+                            <img src="assets/icons/favcon.png" alt="">
+                        </div>
+                    </div>
+                    <div class="brow ten wide column">
+                        <div class="loginFormHeader" style="text-align: center;">
+                            <div class="" style="font-size: 24px;padding-top: 1em;font-weight: 600;">
+                                <u>
+                                    My<span style="color: rgb(204, 85, 85);font-weight: 600;">Donor</span>&reg; Login
+                                </u>
+                            </div>
+
+                        </div>
+                        <br> <br>
+                        <div class="loginForm">
+                            <form class="ui form" id="loginForm">
+                                <div class="field">
+                                    <!-- <label>Branch</label> -->
+                                    <!-- <select name="branch" id="branch" required
+                                style="background:rgb(235, 235, 235); line-height: 1.5em !important;">
+                                <option value="">Select Branch</option>
+                            </select> -->
+                                </div>
+
+                                <div class="field">
+                                    <input type="text" name="username" id="username"
+                                        style="background:rgb(235, 235, 235); border-radius: 15px;line-height: 1.5em;"
+                                        placeholder="UserName" required>
+                                </div>
+
+                                <div class="field">
+                                    <input type="password" name="password" id="password"
+                                        style="background:rgb(235, 235, 235);border-radius: 15px;line-height: 1.5em;"
+                                        placeholder="Password" required>
+                                </div>
+
+                                <div class="field" style="padding-top: 1em;">
+                                    <button class="loginBtn ui fluid red basic button"
+                                        style="line-height: 1.2em;border-radius: 15px;">
+                                        <i class="lock icon"></i> Login
+                                    </button>
+                                </div>
+
+                                <div class="two fields">
+
+                                    <div class="field" style="padding-top: 2em;text-align: left;">
+                                        <a href="#">
+                                            <b><i class="help icon"></i> Support</b>
+                                        </a>
+                                    </div>
+
+                                    <div class="field" style="padding-top: 2em;text-align: right;">
+                                        <a href="#">
+                                            <b><i class="user icon"></i> Account Recovery</b>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- get the branches  -->
+<script>
+
+    // get the base ulr 
+    // when the form is submitted 
+    $('#loginForm').submit((e) => {
+
+        e.preventDefault();
+
+        $('.loginBtn').addClass('loading');
+
+        let loginData = $('#loginForm').serialize();
+
+        let url = "server/login.php";
+
+        $.post(url, loginData, (data) => {
+
+            let dt = JSON.parse(data);
+
+            console.log(data);
+
+            if (dt.login == true) {
+
+                alertify.success('Login Successfull. Redeirecting.');
+
+                window.localStorage.rxliu=dt.userId;
+
+                $('.appContainer').load('stacks/home/home.html');
+
+
+            } else {
+
+                // error notification
+                // Shorthand for:
+                // alertify.notify( message, 'error', [wait, callback]);
+                alertify.error('Incorrect Usersame Or Password.Please Try Again');
+            }
+
+            $('.loginBtn').removeClass('loading');
+
+        })
+    });
+
+
+
+</script>

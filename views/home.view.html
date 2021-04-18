@@ -1,0 +1,683 @@
+<style>
+    .homePageStatisticsBar {
+        display: flexbox;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .statsPanel {
+        max-width: 16em;
+        background-color: #fff;
+        padding: 1em;
+        display: inline-flex;
+        margin-inline: 10px;
+        text-align: left;
+    }
+
+    .statsIcon {
+        width: 2.5em;
+        height: 2em;
+        background: rgba(200, 255, 0, 0.452);
+        border-radius: 50%;
+        float: right;
+        /* padding: 5px; */
+        padding-top: 4px;
+        padding-inline: .7em;
+    }
+
+    .statsTitle {
+        font-weight: 400;
+        color: gray;
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    .statsFigure {
+        padding-inline: 13px;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgb(46, 45, 45);
+    }
+
+    .weekComparison {
+        font-weight: 600;
+        color: rgb(153, 153, 153);
+        font-size: 12px;
+    }
+
+    .dayComparison {
+        font-weight: 600;
+        color: rgb(153, 153, 153);
+        text-align: right;
+        font-size: 12px;
+
+    }
+
+    .weekPercentageMove {
+        color: black
+    }
+
+    .dayPercentageMove {
+        color: black;
+    }
+
+    .todayFigTitle {
+        font-weight: 600;
+        color: rgb(235, 235, 235);
+        /* text-align: right; */
+    }
+
+    .todayFig {
+        font-weight: 600;
+        color: rgb(235, 235, 235);
+        text-align: right;
+    }
+</style>
+
+<div class="homeViewHolder">
+    <!-- main stats grid -->
+    <div class="ui stackable grid">
+        <div class="re sixteen wide column">
+
+            <!-- stats bar -->
+            <div class="homePageStatisticsBar">
+                <div class="statsPanel">
+                    <div class="statsaTop">
+                        <div class="ui grid">
+                            <div class="re eight wide column">
+                                <div class="statsTitle">
+                                    Donations
+                                </div>
+                            </div>
+
+                            <div class="eight wide column">
+                                <div class="statsIcon">
+                                    <i class="green upload icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column" style="padding: 0 !important;">
+                                <div class="statsFigure">
+                                    12
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="weekComparison">
+                                    <span>Wk</span> &nbsp;&nbsp;
+
+                                    <span class="weekPercentageMove">13% <i class="green caret up icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="dayComparison">
+                                    <span>Day</span> &nbsp;&nbsp;
+
+                                    <span class="dayPercentageMove">7%<i class="red caret down icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="blue eleven wide column">
+                                <div class="todayFigTitle">
+                                    Donations Today
+                                </div>
+                            </div>
+
+
+                            <div class="blue five wide column">
+                                <div class="todayFig">
+                                    1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="statsPanel">
+                    <div class="statsaTop">
+                        <div class="ui grid">
+                            <div class="re eight wide column">
+                                <div class="statsTitle">
+                                    Requests
+                                </div>
+                            </div>
+
+                            <div class="eight wide column">
+                                <div class="statsIcon">
+                                    <i class="orange download icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column" style="padding: 0 !important;">
+                                <div class="statsFigure">
+                                    4
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="weekComparison">
+                                    <span>Wk</span> &nbsp;&nbsp;
+
+                                    <span class="weekPercentageMove">1% <i class="green caret up icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="dayComparison">
+                                    <span>Day</span> &nbsp;&nbsp;
+
+                                    <span class="dayPercentageMove">0.3%<i class="green up down icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="orange eleven wide column">
+                                <div class="todayFigTitle">
+                                    Today Requests
+                                </div>
+                            </div>
+
+
+                            <div class="orange five wide column">
+                                <div class="todayFig">
+                                    1
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="statsPanel">
+                    <div class="statsaTop">
+                        <div class="ui grid">
+                            <div class="re eight wide column">
+                                <div class="statsTitle">
+                                    Donors
+                                </div>
+                            </div>
+
+                            <div class="eight wide column">
+                                <div class="statsIcon">
+                                    <i class="purple users icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column" style="padding: 0 !important;">
+                                <div class="statsFigure">
+                                    8
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="weekComparison">
+                                    <span>Wk</span> &nbsp;&nbsp;
+
+                                    <span class="weekPercentageMove">-- <i class="brown check icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="dayComparison">
+                                    <span>Day</span> &nbsp;&nbsp;
+
+                                    <span class="dayPercentageMove">--<i class="brown check icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="purple eight wide column">
+                                <div class="todayFigTitle">
+                                    ##
+                                </div>
+                            </div>
+
+
+                            <div class="purple eight wide column">
+                                <div class="todayFig">
+                                    ##
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="statsPanel">
+                    <div class="statsaTop">
+                        <div class="ui grid">
+                            <div class="re eight wide column">
+                                <div class="statsTitle">
+                                    Total Users
+                                </div>
+                            </div>
+
+                            <div class="eight wide column">
+                                <div class="statsIcon">
+                                    <i class="teal box icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column" style="padding: 0 !important;">
+                                <div class="statsFigure">
+                                    18
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="weekComparison">
+                                    <span>Wk</span> &nbsp;&nbsp;
+
+                                    <span class="weekPercentageMove">## <i class="green caret up icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="re eight wide column">
+                                <div class="dayComparison">
+                                    <span>Day</span> &nbsp;&nbsp;
+
+                                    <span class="dayPercentageMove">##<i class="red caret down icon"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="teal eight wide column" style="background: rgb(58, 102, 102);">
+                                <div class="todayFigTitle">
+                                    Total Users
+                                </div>
+                            </div>
+
+
+                            <div class="teal eight wide column" style="background: rgb(66, 107, 107);">
+                                <div class="todayFig">
+                                    9
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- stats bar -->
+
+
+        </div>
+    </div>
+    <!-- mai stats grid -->
+
+    <!-- main lates grid  -->
+    <div class="ui two column stackable grid">
+        <div class="sixteen wide column" style="background:rgb(235, 235, 235);">
+
+        </div>
+
+        <div class="re column">
+            <div class="ui " style="background: #fff;padding: 10px;">
+                <div class="" style="border-bottom: 1px solid rgb(230, 230, 230);padding-bottom: 5px;">
+                    <h4>
+                        Latest Requests
+
+                        <span style="float:right;font-size: 11px;">
+                            <a style="color: teal;" href=""><i class="eye icon"></i> View More</a>
+                        </span>
+                    </h4>
+                </div>
+
+                <div class="" style="padding-top: 1em;">
+                    <table class="ui unstackable very basic striped table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No.
+                                </th>
+                                <th>
+                                    Request Id
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Date/Time
+                                </th>
+
+
+                                <th>
+                                    Type
+                                </th>
+
+                                <th>
+                                    View
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="latestRequests" style="font-size: 12px;">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="re column">
+            <div class="ui " style="background: #fff;padding: 10px;">
+                <div class="" style="border-bottom: 1px solid rgb(230, 230, 230);padding-bottom: 5px;">
+                    <h4>
+                        Top Selling
+
+                        <span style="float:right;font-size: 11px;">
+                            <a style="color: maroon;" href=""><i class="eye icon"></i> View More</a>
+                        </span>
+                    </h4>
+                </div>
+
+                <div class="" style="padding-top: 1em;">
+                    <table class="ui unstackable very basic striped table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No.
+                                </th>
+
+                                <th>
+                                    Donation Id
+                                </th>
+
+                                <th>
+                                    Name
+                                </th>
+
+                                <th>
+                                    Location
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    View
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody class="latestDonations" style="font-size: 12px;">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="re column">
+            <div class="ui " style="background: #fff;padding: 10px;">
+                <div class="" style="border-bottom: 1px solid rgb(230, 230, 230);padding-bottom: 5px;">
+                    <h4>
+                        Top Centers
+
+                        <span style="float:right;font-size: 11px;">
+                            <a style="color: rgb(138, 25, 190);" href=""><i class="eye icon"></i>
+                                View
+                                More</a>
+                        </span>
+                    </h4>
+                </div>
+
+
+                <div class="" style="padding-top: 1em;">
+                    <table class="ui unstackable very basic striped table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No.
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Location
+                                </th>
+
+                                <th>
+                                    View
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody class="topCenters" style="font-size: 12px;">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="re column">
+            <div class="ui " style="background: #fff;padding: 10px;">
+                <div class="" style="border-bottom: 1px solid rgb(230, 230, 230);padding-bottom: 5px;">
+                    <h4>
+                        Donation/Requests Graph
+
+                        <span style="float:right;font-size: 11px;">
+                            <a style="color: rgb(190, 25, 108);" href=""><i class="eye icon"></i>
+                                View
+                                More</a>
+                        </span>
+                    </h4>
+                </div>
+
+
+                <div class="" id="salesByCategory" style="padding-top: 1em;">
+                    <canvas id="salesByCategoryGraph"></canvas>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- main lates grid  -->
+</div>
+
+<script>
+    getHomePageData();
+
+    function getHomePageData() {
+
+        $.post('server/getHomePageData.php', (data) => {
+
+            let homePageData = JSON.parse(data);
+
+            // console.log(homePageData);
+
+            let latestRequests = homePageData.latestRequests;
+
+            renderLatestRequests(latestRequests);
+
+
+            let latestDonations = homePageData.latestDonations;
+
+            renderLatestDonations(latestDonations);
+
+
+            let topCenters = homePageData.topCenters;
+
+            renderTopCenters(topCenters);
+
+            let salesByCategory = homePageData.salesByCategory;
+
+            renderSalesByCategoryGraph(salesByCategory);
+        })
+    }
+
+
+    function renderLatestRequests(latestTransactions) {
+
+        let counter = 0;
+
+        $('.latestRequests').empty();
+        for (let i = 0; i < latestTransactions.length; i++) {
+
+            // append the rows on the tbody
+            $('.latestRequests').append('<tr class="latestTransactions_row' + i + '"/>');
+
+            // css
+            $('.latestTransactions_row' + i).css({ cursor: 'pointer' });
+
+            // create the holder var
+            let colData = "";
+
+            // create the for in vars
+            let dataKey;
+
+            // for in loop for the columns
+            for (dataKey in latestTransactions[i]) {
+
+                // append the columns
+                $('.latestTransactions_row' + i).append('<td class="latestTransactions_col' + counter + '"/>');
+
+
+                // put the data in the colums
+                $('.latestTransactions_col' + counter).html(latestTransactions[i][dataKey]);
+
+                // increment the data
+                counter++;
+            }
+
+        }
+    }
+
+
+    function renderLatestDonations(topSelling) {
+
+        let counter = 0;
+
+
+        $('.latestDonations').empty();
+
+        for (let i = 0; i < topSelling.length; i++) {
+
+            // append the rows on the tbody
+            $('.latestDonations').append('<tr class="topSelling_row' + i + '"/>');
+
+            // css
+            $('.topSelling_row' + i).css({ cursor: 'pointer' });
+
+            // create the holder var
+            let colData = "";
+
+            // create the for in vars
+            let dataKey;
+
+            // for in loop for the columns
+            for (dataKey in topSelling[i]) {
+
+                // append the columns
+                $('.topSelling_row' + i).append('<td class="topSelling_col' + counter + '"/>');
+
+
+                // put the data in the colums
+                $('.topSelling_col' + counter).html(topSelling[i][dataKey]);
+
+                // increment the data
+                counter++;
+            }
+
+        }
+    }
+
+    function renderTopCenters(backInStock) {
+
+        let counter = 0;
+
+        $('.topCenters').empty();
+
+        for (let i = 0; i < backInStock.length; i++) {
+
+            // append the rows on the tbody
+            $('.topCenters').append('<tr class="backInStock_row' + i + '"/>');
+
+            // css
+            $('.backInStock_row' + i).css({ cursor: 'pointer' });
+
+            // create the holder var
+            let colData = "";
+
+            // create the for in vars
+            let dataKey;
+
+            // for in loop for the columns
+            for (dataKey in backInStock[i]) {
+
+                // append the columns
+                $('.backInStock_row' + i).append('<td class="backInStock_col' + counter + '"/>');
+
+
+                // put the data in the colums
+                $('.backInStock_col' + counter).html(backInStock[i][dataKey]);
+
+                // increment the data
+                counter++;
+            }
+
+        }
+    }
+
+
+    function renderSalesByCategoryGraph(salesByCategory) {
+        //get the context
+        var ctx = $('#salesByCategoryGraph');
+        var config = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [17102, 8900],
+                    backgroundColor: [
+                        window.chartColors.red,
+                        window.chartColors.blue,
+
+                    ]
+                }],
+
+                labels: [
+                    'Donations', 'Requests',
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: 'Chart',
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                }
+
+            }
+        }
+
+        //START THE JOB
+        var myChart = new Chart(ctx, config)
+
+    }
+
+</script>

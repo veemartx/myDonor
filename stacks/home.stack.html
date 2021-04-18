@@ -1,0 +1,411 @@
+<style>
+    .quickActionContainer {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+    }
+
+    .quickAction {
+        display: inline-flex;
+        padding-top: .2em;
+    }
+
+    .computerNameAndBranch {
+
+        color: rgb(195, 196, 197);
+        font-weight: 600;
+        text-align: right;
+        padding-top: .7em;
+        vertical-align: auto;
+    }
+
+    .notification {
+        color: rgb(195, 196, 197);
+        width: 2em;
+        height: 2.5em;
+        position: relative;
+        margin-left: 2em;
+        padding-top: 10px;
+        /* background: red; */
+    }
+
+    .notifBar {
+        display: inline-flex;
+    }
+
+    .notification i {
+
+        font-size: 22px;
+    }
+
+    .notification .label {
+        border-radius: 50%;
+    }
+
+    .help {
+
+        margin-left: 3em;
+        padding-top: 5px;
+
+    }
+
+    .compNavContainer {
+        background-color: rgba(240, 248, 255, 0);
+    }
+
+    .compNav {
+        text-align: center;
+        font-weight: 600;
+        padding: .7em;
+        font-size: 14px;
+    }
+
+    .compNav:hover {
+        background-color: #fff;
+    }
+
+    .compNav:hover .compNavSubMenu {
+        display: block;
+    }
+
+    .compNavSubMenu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        height: 70vh;
+        width: 12em;
+        background: rgb(255, 255, 255);
+        display: none;
+        z-index: 100;
+    }
+
+    .compNavSubMenuHeader {
+        padding-top: 1em;
+        color: rgb(67, 102, 136);
+    }
+
+    .submenuLink {
+        padding: 1em;
+        text-align: left;
+    }
+
+    .submenuLink a {
+        font-size: 14px;
+    }
+
+    .logout {
+        cursor: pointer;
+    }
+
+    .syncColumn {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0 !important;
+    }
+</style>
+
+
+<!-- <div class="re sixteen wide column" style="background: rgb(77, 41, 48);"></div> -->
+
+<div class="re sixteen wide column" style="background: rgb(65, 29, 36);">
+
+    <!-- top bar -->
+    <div class="ui grid" style="max-width: 85em;margin: auto;">
+        <div class="gree four wide column">
+            <div class="" style="padding-top: 10px;">
+                <span style="font-size: 25px;font-weight: 900;color: aliceblue;">
+                    My
+                </span>
+                <span style="color: red;font-size: 25px;font-weight: 900;">
+                    Donor
+                </span>
+            </div>
+        </div>
+
+        <div class="brow four wide column">
+            <!-- computer search  -->
+            <div class="ui fluid search">
+                <div class="ui fluid icon input">
+                    <input class="prompt" type="text" placeholder="Search Here..."
+                        style="background: rgba(0, 0, 0, 0.185);line-height:1.4em;">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+
+            <!-- computer search  -->
+        </div>
+    </div>
+    <!-- top bar  -->
+
+</div>
+
+
+<div class=" gree sixteen wide column" style="background: rgb(238, 238, 238);padding-top: 0 !important;">
+    <div class="ui grid" style="max-width: 90em;margin: auto;">
+
+        <!-- sidebar -->
+        <div class="re three wide column" style="height: 80vh;background: rgb(255, 255, 255);">
+            <div class="compNavContainer">
+                <div class="compNav">
+                    <a href="home">
+                        <i style="color: purple;font-size:16px;" class="home icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Home
+                        </div>
+                    </a>
+
+
+                </div>
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: rgb(197, 73, 73);font-size:16px;" class="heart icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Requests
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Donation Requests
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Donation Requests
+                                </a>
+                            </div>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Request Settings
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: orangered;font-size:16px;" class="syringe icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Donations
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Donations
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="donations" style="color: black;">
+                                    Donations
+                                </a>
+                            </div>
+
+
+                            <div class="submenuLink hqOnly">
+                                <a href="donation-settings" style="color: black;">
+                                    Donation Settings
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: dodgerblue;font-size:16px;" class="columns icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Services
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Services
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Transfers
+                                </a>
+                            </div>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Transport Services
+                                </a>
+                            </div>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Bank Reports
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color:crimson;font-size:16px;" class="users icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Users
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Users
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="users" style="color: black;">
+                                    Users
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: rgb(255, 0, 221);font-size:16px;" class="bar chart icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Intelligence
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Intelligence/Reports
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Donation Reports
+                                </a>
+                            </div>
+
+
+                            <div class="submenuLink">
+                                <a href="" style="color: black;">
+                                    Request Reports
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: teal;font-size:16px;" class="info cirle icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Support
+                        </div>
+                    </a>
+                </div>
+
+                <div class="compNav">
+                    <a href="#">
+                        <i style="color: brown;font-size:16px;" class="cogs icon"></i>
+                        <div class="" style="color: black;padding-top: 5px;">
+                            Settings
+                        </div>
+                    </a>
+
+                    <div class="compNavSubMenu">
+                        <div class="compNavSubMenuHeader">
+
+                            Settings
+
+                            <hr>
+
+                            <br>
+
+                            <div class="submenuLink">
+                                <a href="software-settings" style="color: black;">
+                                    Software Settings
+                                </a>
+                            </div>
+
+                            <div class="submenuLink">
+                                <a href="user-roles" style="color: black;">
+                                    User Roles
+                                </a>
+                            </div>
+
+                            <div class="submenuLink hqOnly">
+                                <a href="user-settings" style="color: black;">
+                                    User Settings
+                                </a>
+                            </div>
+
+                            <div class="submenuLink retailOnly">
+                                <a href="users" style="color: black;">
+                                    User Settings
+                                </a>
+                            </div>
+
+                            <div class="submenuLink">
+                                <a class="logout" style="color: black;">
+                                    Logout
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- sidebar -->
+
+        <div class="mainContainerHolder yello thirteen wide column">
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.title = "My Donor | Dash";
+
+
+    handleRoute();
+</script>
