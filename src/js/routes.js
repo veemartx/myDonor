@@ -27,13 +27,17 @@ function handleRoute() {
 
             break;
 
+        case 'users':
+
+            $('.mainContainerHolder').load('views/users.view.html');
+
+            break;
+
         default:
 
-            if (currentResource.includes('supplier?s=')) {
+            if (currentResource.includes('user?u=')) {
 
-                $('.breadcrumps').html('<a>Home</a> / <a href="">Supplier</a>')
-
-                $('.mainContainerHolder').load('views/supplier.view.html');
+                $('.mainContainerHolder').load('views/user.view.html');
 
             }
 
