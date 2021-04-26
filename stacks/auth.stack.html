@@ -146,9 +146,10 @@
 
                 alertify.success('Login Successfull. Redeirecting.');
 
-                window.localStorage.rxliu=dt.userId;
+                window.localStorage.rxliu = dt.userId;
 
-                $('.appContainer').load('stacks/home/home.html');
+                // $('.appContainer').load('stacks/home/home.html');
+                window.location.reload();
 
 
             } else {
