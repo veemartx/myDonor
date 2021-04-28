@@ -33,6 +33,17 @@ function handleRoute() {
 
             break;
 
+        case 'hospitals':
+
+            $('.mainContainerHolder').load('views/hospitals.view.html');
+
+            break;
+
+        case 'centers':
+
+            $('.mainContainerHolder').load('views/centers.view.html');
+
+            break;
         default:
 
             if (currentResource.includes('user?u=')) {
