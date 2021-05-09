@@ -1,0 +1,85 @@
+<style>
+
+</style>
+<div class="donationsView">
+
+    <div class="ui grid">
+        <div class="re sixteen wide column">
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px;">
+                <h4>
+                    Donations
+                </h4>
+            </div>
+
+
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
+                <div class="ui grid">
+                    <div class="sixteen wide column">
+                        <table class="ui basic striped table"> 
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Code</th>
+                                    <th>Donor</th>
+                                    <th>Center</th>
+                                    <th>Status</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            <tbody class="donationsList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    // get donations 
+    $.post('server/getDonations.php', (data) => {
+
+        let donations = JSON.parse(data);
+
+        // console.log(data);
+
+        let counter = 0;
+
+        $('.donationsList').empty();
+
+        for (let i = 0; i < donations.length; i++) {
+
+            // append the rows on the tbody
+            $('.donationsList').append('<tr class="donations_row' + i + '"/>');
+
+            // css
+            $('.donations_row' + i).css({ cursor: 'pointer' });
+
+            // create the holder var
+            let colData = "";
+
+            // create the for in vars
+            let dataKey;
+
+            // for in loop for the columns
+            for (dataKey in donations[i]) {
+
+                // append the columns
+                $('.donations_row' + i).append('<td class="donationss_col' + counter + '"/>');
+
+
+                // put the data in the colums
+                $('.donationss_col' + counter).html(donations[i][dataKey]);
+
+                // increment the data
+                counter++;
+            }
+
+        }
+    })
+
+</script>

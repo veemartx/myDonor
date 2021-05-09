@@ -1,0 +1,102 @@
+<style>
+
+</style>
+<div class="donationView">
+
+    <div class="ui grid">
+        <div class="re sixteen wide column">
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px;">
+                <h4>
+                    Donation
+                </h4>
+            </div>
+
+
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
+                <div class="ui grid">
+                    <div class="sixteen wide column">
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Donation Code: </span> <span class="donationCode"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Donor: </span> <span class="donorName"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Donation Center: </span> <span class="center"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Donation Date: </span> <span class="date"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Blood Type: </span> <span class="bloodType"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Vol: </span> <span class="amount"></span>
+                        </div>
+
+                        <div class="" style="padding-top: 5px;">
+                            <span>Status </span> <span class="status"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let donationId = getEntityId('dn');
+
+    let dn = $.param({
+
+        donationId: donationId,
+    })
+
+
+    $.post('server/getDonation.php', dn, (data) => {
+
+        // console.log(data);
+        let donation = JSON.parse(data);
+
+        console.log(donation);
+
+        // htmls
+        $('.donationCode').html("<b>" + donation.code + "</b>");
+
+        $('.donorName').html(donation.donor);
+
+        $('.center').html(donation.center);
+
+        $('.date').html(donation.date);
+
+        $('.bloodType').html(donation.bloodType);
+
+        $('.amount').html(donation.amount + " Pints");
+
+        $('.status').html(donation.status);
+
+
+
+
+    })
+
+
+
+
+
+    function getEntityId(name) {
+
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+
+    }
+
+</script>

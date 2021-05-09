@@ -44,14 +44,52 @@ function handleRoute() {
             $('.mainContainerHolder').load('views/centers.view.html');
 
             break;
+
+        case 'appointments':
+
+            $('.mainContainerHolder').load('views/appointments.view.html');
+
+            break;
+
+        case 'donations':
+
+            $('.mainContainerHolder').load('views/donations.view.html');
+
+            break;
+
+        case 'donation-settings':
+
+            $('.mainContainerHolder').load('views/donation-settings.view.html');
+
+            break;
+
+        case 'requests':
+
+            $('.mainContainerHolder').load('views/requests.view.html');
+
+            break;
         default:
 
             if (currentResource.includes('user?u=')) {
 
                 $('.mainContainerHolder').load('views/user.view.html');
 
+            } else if (currentResource.includes('appointment?a=')) {
+
+                $('.mainContainerHolder').load('views/appointment.view.html');
+
             }
 
+            else if (currentResource.includes('donation?dn=')) {
+
+                $('.mainContainerHolder').load('views/donation.view.html');
+
+            }
+            else if (currentResource.includes('appeal?a=')) {
+
+                $('.mainContainerHolder').load('views/appeal.view.html');
+
+            }
             break;
     }
 

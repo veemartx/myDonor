@@ -1,0 +1,105 @@
+<style>
+
+</style>
+<div class="appView">
+
+    <div class="ui grid">
+        <div class="re sixteen wide column">
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px;">
+                <h4>
+                    Appointments
+                </h4>
+            </div>
+
+
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
+                <div class="ui grid">
+                    <div class="sixteen wide column">
+                        <table class="ui stripped basic table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        No.
+                                    </th>
+                                    <th>
+                                        Code.
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Center
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Created
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        View
+                                    </th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody class="appointmentsList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // get the appointments 
+    $.post('server/getAppointments.php', (data) => {
+
+        // console.log(data);
+
+        let appointments = JSON.parse(data);
+
+        let counter = 0;
+
+        $('.appointmentsList').empty();
+
+        for (let i = 0; i < appointments.length; i++) {
+
+            // append the rows on the tbody
+            $('.appointmentsList').append('<tr class="app_row' + i + '"/>');
+
+            // css
+            $('.app_row' + i).css({ cursor: 'pointer' });
+
+            // create the holder var
+            let colData = "";
+
+            // create the for in vars
+            let dataKey;
+
+            // for in loop for the columns
+            for (dataKey in appointments[i]) {
+
+                // append the columns
+                $('.app_row' + i).append('<td class="app_col' + counter + '"/>');
+
+
+                // put the data in the colums
+                $('.app_col' + counter).html(appointments[i][dataKey]);
+
+                // increment the data
+                counter++;
+            }
+
+        }
+    })
+</script>

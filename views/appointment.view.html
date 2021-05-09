@@ -1,0 +1,182 @@
+<style>
+
+</style>
+<div class="appView">
+
+    <div class="ui grid">
+        <div class="re sixteen wide column">
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px;">
+                <h4>
+                    Appointment
+                </h4>
+            </div>
+
+
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
+                <div class="ui grid">
+                    <div class="re sixteen wide column">
+                        <div class="code" style="padding-top: 5px;">
+
+                        </div>
+
+
+                        <div class="center" style="padding-top: 5px;">
+
+                        </div>
+
+                        <div class="name" style="padding-top: 5px;">
+
+                        </div>
+
+                        <div class="date" style="padding-top: 5px;">
+
+                        </div>
+
+                        <div class="created" style="padding-top: 5px;">
+
+                        </div>
+
+                        <div class="status" style="padding-top: 5px;">
+
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <hr>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <h4>
+                            Actions
+                        </h4>
+
+                        <br>
+
+                        <button class="declineAppointment ui red basic button" onclick="declineAppointment()">
+                            Decline
+                        </button>
+
+                        <button class="completedAppointment ui green basic button" onclick="completeAppointment()">
+                            Completed
+                        </button>
+
+                        <button class="failedAppointment ui orange basic button" onclick="failedAppointment();">
+                            Failed
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // get appointment details 
+
+    let appointmentId = getEntityId('a');
+
+    var appParam = $.param({
+        appId: appointmentId
+    })
+
+
+
+    $.post('server/getAppointmentDetails.php', appParam, (data) => {
+
+        // console.log(data);
+        let res = JSON.parse(data);
+
+        // htmls 
+        $('.code').html("<b> Appointment Code: </b>" + res.code);
+
+        $('.center').html("<b> Center: </b>" + res.center);
+
+        $('.date').html("<b> Appointment Date: </b>" + res.date);
+
+        $('.name').html("<b> Name : </b>" + res.user);
+
+        $('.created').html("<b> Created: </b>" + res.created);
+
+        $('.status').html("<b> Status </b>" + res.status);
+
+
+        // disable the buttons 
+
+        if (res.status != 'Pending Review') {
+
+            $('.declineAppointment').prop('disabled', true);
+
+            $('.completedAppointment').prop('disabled', true);
+
+            $('.failedAppointment').prop('disabled', true);
+
+        }
+
+
+    })
+
+
+
+    function declineAppointment() {
+
+        // console.log(appParam);
+        $.post('server/declineAppointment.php', appParam, (data) => {
+
+            alert(data);
+
+            window.location.reload();
+
+        })
+    }
+
+
+    function failedAppointment() {
+
+        // console.log(appParam);
+        $.post('server/failedAppointment.php', appParam, (data) => {
+
+            alert(data);
+
+            window.location.reload();
+
+        })
+    }
+
+
+    function completeAppointment() {
+
+        // ask for number of units donated
+        let donationAmount = prompt('Donation Amount In Pints', '1')
+
+        // alert(donationAmount);
+
+        if (donationAmount == null) {
+
+        } else {
+            var appParam = $.param({
+                appId: appointmentId,
+                donationAmount: donationAmount
+            })
+
+
+            // console.log(appParam);
+            $.post('server/completeAppointment.php', appParam, (data) => {
+
+                alert(data);
+
+                window.location.reload();
+            })
+        }
+    }
+
+
+    function getEntityId(name) {
+
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+
+    }
+
+</script>
