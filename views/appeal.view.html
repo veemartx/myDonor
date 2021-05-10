@@ -14,7 +14,7 @@
 
             <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
                 <div class="ui grid">
-                    
+
                 </div>
             </div>
         </div>
@@ -22,5 +22,37 @@
 </div>
 
 <script>
+
+    // get the appeal data 
+
+    let appealId = getEntityId('a');
+
+    let appeald = $.param({
+
+        appealId:appealId,
+
+    })
+
+
+    $.post('.server/getAppeal.php',appeald, (data) => {
+
+
+        console.log(data);
+
+    })
+
+
+    // get entity id 
+
+    function getEntityId(name) {
+
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+
+    }
+
+
+
 
 </script>
