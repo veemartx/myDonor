@@ -13,7 +13,7 @@ $selQuery = mysqli_query($con, $sel);
 
 if ($r = mysqli_fetch_assoc($selQuery)) {
 
-    $res->$code = $r['appealCode'];
+    $res->code = $r['appealCode'];
 
     $res->center = $r['center'];
 
@@ -23,7 +23,7 @@ if ($r = mysqli_fetch_assoc($selQuery)) {
 
     $res->status = $r['status'];
 
-    $res->bloodType = $r['bloodtType'];
+    $res->bloodType = $r['bloodType'];
 
     $user = $r['userId'];
 
@@ -33,6 +33,12 @@ if ($r = mysqli_fetch_assoc($selQuery)) {
 
     if ($u = mysqli_fetch_assoc($seluQuery)) {
 
-        $app->user = $u['fullname'];
+        $res->user = $u['fullname'];
+
     }
 }
+
+
+
+
+echo json_encode($res);

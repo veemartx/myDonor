@@ -14,7 +14,34 @@
 
             <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
                 <div class="ui grid">
+                    <div class="sixteen wide column">
+                        <div class="sixteen wide column">
 
+                            <div class="" style="padding-top: 5px;">
+                                <span>Donation Code: </span> <span class="donationCode"></span>
+                            </div>
+
+                            <div class="" style="padding-top: 5px;">
+                                <span>Donor: </span> <span class="donorName"></span>
+                            </div>
+
+                            <div class="" style="padding-top: 5px;">
+                                <span>Donation Center: </span> <span class="center"></span>
+                            </div>
+
+                            <div class="" style="padding-top: 5px;">
+                                <span>Donation Date: </span> <span class="date"></span>
+                            </div>
+
+                            <div class="" style="padding-top: 5px;">
+                                <span>Blood Type: </span> <span class="bloodType"></span>
+                            </div>
+
+                            <div class="" style="padding-top: 5px;">
+                                <span>Status </span> <span class="status"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,17 +56,35 @@
 
     let appeald = $.param({
 
-        appealId:appealId,
+        appealId: appealId,
 
     })
 
 
-    $.post('.server/getAppeal.php',appeald, (data) => {
+    $.post('server/getAppeal.php', appeald, (data) => {
+
+        // console.log(data); 
+        let appeal = JSON.parse(data);
+
+        // console.log(appeal);
+        // htmls
+        $('.donationCode').html("<b>" + appeal.code + "</b>");
+
+        $('.donorName').html(appeal.donor);
+
+        $('.center').html(appeal.center);
+
+        $('.date').html(appeal.date);
+
+        $('.bloodType').html(appeal.bloodType);
 
 
-        console.log(data);
+        $('.status').html(appeal.status);
 
     })
+
+
+
 
 
     // get entity id 
