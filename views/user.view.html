@@ -47,10 +47,8 @@
                                 <button class="ui green basic min button">
                                     Edit
                                 </button>
-                                <button class="ui orange  basic min button" type="button">
-                                    Suspend
-                                </button>
-                                <button class="ui red basic min button" type="button">
+
+                                <button class="deleteUser ui red basic min button" type="button">
                                     Delete
                                 </button>
                             </div>
@@ -132,6 +130,26 @@
         // 
     })
 
+
+
+    $('.deleteUser').click(() => {
+
+        if (confirm('Delete User?') == true) {
+
+            $('.deleteUser').addClass('loading');
+
+            $.post('server/deleteUser.php', userParam, (data) => {
+
+                alert(data);
+
+                window.history.back();
+
+                $('.deleteUser').removeClass('loading');
+
+            })
+        }
+
+    })
 
     function getEntityId(name) {
 

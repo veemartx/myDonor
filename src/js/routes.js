@@ -90,6 +90,12 @@ function handleRoute() {
                 $('.mainContainerHolder').load('views/appeal.view.html');
 
             }
+
+            else if (currentResource.includes('location?u=')) {
+
+                $('.mainContainerHolder').load('views/location.view.html');
+
+            }
             break;
     }
 

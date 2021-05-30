@@ -1,0 +1,122 @@
+<style>
+
+</style>
+<div class="userView">
+
+    <div class="ui grid">
+        <div class="re sixteen wide column">
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px;">
+                <h4>
+                    Location
+                </h4>
+            </div>
+
+
+            <div class="" style="background: rgba(255,255,255,.8);padding: 10px; margin-top: 10px;">
+                <div class="ui grid">
+                    <div class="nine wide column" style="border-right: 1px solid rgb(209, 209, 209);">
+                        <form class="ui form" id="editUserDetailsForm">
+
+                            <div class="field">
+                                <label>Name</label>
+                                <input type="text" name="name" id="name" style="border: none;">
+                            </div>
+
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="email" name="email" id="email" style="border: none;">
+                            </div>
+                            <div class="field">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" id="phone" style="border: none;">
+                            </div>
+                            <div class="field">
+                                <label>Town</label>
+                                <input type="text" name="town" id="town" style="border: none;">
+                            </div>
+
+                            <div class="field" style="text-align: center;padding-top: 2em;">
+                                <button class="editLocation ui green basic min button">
+                                    Edit
+                                </button>
+                                <!-- <button class="ui orange  basic min button" type="button">
+                                    Suspend
+                                </button> -->
+                                <button class="deleteLocation ui red basic min button" type="button">
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+
+    document.title = "MyDonor | Location";
+
+
+    let locationId = getEntityId('u');
+
+
+    let userParam = $.param({
+        location: locationId,
+    })
+
+
+    $.post('server/getLocation.php', userParam, (data) => {
+
+        let locationData = JSON.parse(data);
+
+        // console.log(locationData);
+        // htmls 
+        document.getElementById('name').value = locationData.name;
+        document.getElementById('email').value = locationData.email;
+        document.getElementById('phone').value = locationData.phone;
+        document.getElementById('town').value = locationData.location;
+    })
+
+
+    // when edit form is submitted 
+    $('#editUserDetailsForm').submit((e) => {
+
+        e.preventDefault();
+
+        let userEditData = $('#editUserDetailsForm').serialize();
+
+        // 
+    })
+
+
+    $('.deleteLocation').click(() => {
+
+        if (confirm('Delete Location?') == true) {
+
+            $('.deleteLocation').addClass('loading');
+
+            $.post('server/deleteLocation.php', userParam, (data) => {
+
+                alert(data);
+
+                window.history.back();
+
+                $('.deleteLocation').removeClass('loading');
+
+            })
+        }
+
+    })
+
+    function getEntityId(name) {
+
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+
+    }
+</script>

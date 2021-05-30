@@ -179,13 +179,7 @@
 
                             <div class="submenuLink">
                                 <a href="requests" style="color: black;">
-                                    Donation Requests / Appeals 
-                                </a>
-                            </div>
-
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Request Settings
+                                    Donation Requests / Appeals
                                 </a>
                             </div>
 
@@ -224,55 +218,11 @@
                             </div>
 
 
-                            <div class="submenuLink hqOnly">
-                                <a href="donation-settings" style="color: black;">
-                                    Donation Settings
-                                </a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
 
 
-                <div class="compNav">
-                    <a href="#">
-                        <i style="color: dodgerblue;font-size:16px;" class="columns icon"></i>
-                        <div class="" style="color: black;padding-top: 5px;">
-                            Services
-                        </div>
-                    </a>
-
-                    <div class="compNavSubMenu">
-                        <div class="compNavSubMenuHeader">
-
-                            Services
-
-                            <hr>
-
-                            <br>
-
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Transfers
-                                </a>
-                            </div>
-
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Transport Services
-                                </a>
-                            </div>
-
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Bank Reports
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
                 <div class="compNav">
                     <a href="#">
@@ -337,49 +287,8 @@
                     </div>
                 </div>
 
-                <div class="compNav">
-                    <a href="#">
-                        <i style="color: rgb(255, 0, 221);font-size:16px;" class="bar chart icon"></i>
-                        <div class="" style="color: black;padding-top: 5px;">
-                            Intelligence
-                        </div>
-                    </a>
-
-                    <div class="compNavSubMenu">
-                        <div class="compNavSubMenuHeader">
-
-                            Intelligence/Reports
-
-                            <hr>
-
-                            <br>
-
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Donation Reports
-                                </a>
-                            </div>
 
 
-                            <div class="submenuLink">
-                                <a href="" style="color: black;">
-                                    Request Reports
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="compNav">
-                    <a href="#">
-                        <i style="color: teal;font-size:16px;" class="info cirle icon"></i>
-                        <div class="" style="color: black;padding-top: 5px;">
-                            Support
-                        </div>
-                    </a>
-                </div>
 
                 <div class="compNav">
                     <a href="#">
@@ -398,27 +307,10 @@
 
                             <br>
 
-                            <div class="submenuLink">
-                                <a href="software-settings" style="color: black;">
-                                    Software Settings
-                                </a>
-                            </div>
-
-                            <div class="submenuLink">
-                                <a href="user-roles" style="color: black;">
-                                    User Roles
-                                </a>
-                            </div>
-
-                            <div class="submenuLink hqOnly">
-                                <a href="user-settings" style="color: black;">
-                                    User Settings
-                                </a>
-                            </div>
 
                             <div class="submenuLink retailOnly">
                                 <a href="users" style="color: black;">
-                                    User Settings
+                                    Users
                                 </a>
                             </div>
 
@@ -448,4 +340,20 @@
 
 
     handleRoute();
+
+
+    $('.logout').click(() => {
+
+        if (confirm('Logout From This Device?') == true) {
+
+            $.post('server/logout.php', (data) => {
+
+                alert(data);
+
+                window.location.reload();
+            })
+        }
+    })
+
+
 </script>
