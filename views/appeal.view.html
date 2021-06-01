@@ -44,7 +44,17 @@
                     </div>
                 </div>
             </div>
+
+
+            <br> <br>
+            <div class="sixteen wide column">
+                <button class="notifyUserBtn ui red basic button">
+                    <i class="mail icon"></i> Notify User
+                </button>
+            </div>
         </div>
+
+
     </div>
 </div>
 
@@ -84,6 +94,25 @@
     })
 
 
+
+    // post 
+    // when notify btn is submitted 
+    $('.notifyUserBtn').click(() => {
+
+        if (confirm('Notify User Via Sms?') == true) {
+
+            $('.notifyUserBtn').addClass('loading');
+
+            $.post('server/sendSms.php',appeald, (data) => {
+
+                alert(data);
+
+                $('.notifyUserBtn').removeClass('loading');
+
+            })
+
+        }
+    })
 
 
 
